@@ -1,0 +1,44 @@
+Description
+El propósito de este test es desarrollar una pequeña aplicación para demostrar tus habilidades en iOS.
+
+La app tiene que:
+Descargar una lista de usuarios basándonos en nuestra posición actual (Endpoints).
+El contenido, debe ser mostrado en dos contenidos; Lista y Mapa. 
+La vista de la lista tiene que ir actualizándose cada 10 segundos.
+Consejo: Se puede usar 2 tabs (List y Map) para diferenciar las dos vistas, o mostrar una desplegable encima del mapa, a vuestra elección.
+Al pulsar en el contenido de la Lista o del Marker del mapa, debe mostrar un detalle.
+
+Diseño UI:
+Lista: Nombre, avatar y el tiempo relativo (Hace 2 horas, 3 días)
+Mapa: Marker personalizado con el avatar del usuario.
+Detalle: Mostrar toda la info que se tenga del usuario - nombre, latitud, longitud, fecha relativa y fecha de la posición día y hora, motion.
+Endpoints
+Lista de Usuarios POST https://api-dev.alpify.com:3005/mobiletest/users
+Parameters
+{Number} latitude Your current latitude.
+{Number} longitude Your current longitude.
+Example
+https://api-dev.alpify.com:3005/mobiletest/users 
+Body { latitude=41.387154, longitude= 2.167180 }
+
+
+Result
+[
+    { 
+name: String,
+avatar: String (url),
+latitude: Double,
+longitude: Double,
+timestamp: Date,
+motion: String (walk, run, vehicle, bicycle, still)
+}, {...}
+]
+Requirements
+Xcode 10 or superior
+> iOS 11
+Arquitectura a elegir (mejor no usar MVC)
+Nice to have
+RxSwift - no requerido, pero se tendrá en cuenta.
+Unit test - no requerido, pero se tendrá en cuenta. Mejor añadir alguno que no añadir ninguno.
+Diseño - preferimos una buena implementación a un buen diseño, pero también se tendrá en cuenta la originalidad. 
+
