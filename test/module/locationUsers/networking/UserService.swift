@@ -39,10 +39,8 @@ class UserService: BaseService {
     }
     
     public override var task: Task {
-        return .requestParameters(parameters: ["latitude": self.latitude,
-                                               "longitude": self.longitude],
-                                  encoding: URLEncoding.default)
-        
+        return .requestParameters(parameters: ["latitude": self.latitude, "longitude": self.longitude],
+                                  encoding: JSONEncoding.default)
     }
     
     public override var sampleData: Data {

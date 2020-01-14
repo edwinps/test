@@ -12,4 +12,14 @@ extension String {
     public var utf8Encoded: Data {
         return self.data(using: .utf8)!
     }
+    
+    func format(_ format: String = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", identifierLocal: String = "UTC") -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        if let dateObj = dateFormatter.date(from: self) {
+            dateFormatter.dateFormat = "MM-dd-yyyy"
+            return dateFormatter.string(from: dateObj)
+        }
+        return ""
+    }
 }

@@ -10,7 +10,6 @@
 		64B4ED43BDB1DF6A015D7791 /* Pods_testTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D525BC088C34CE7FE51F0A9 /* Pods_testTests.framework */; };
 		CB4BEDFA23CDF51900F6DC2D /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4BEDF923CDF51900F6DC2D /* UserDTO.swift */; };
 		CB4BEDFE23CE267D00F6DC2D /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4BEDFD23CE267D00F6DC2D /* UserCell.swift */; };
-		CB4BEE0023CE291B00F6DC2D /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4BEDFF23CE291B00F6DC2D /* DateExtension.swift */; };
 		CB4BEE0223CE2D4300F6DC2D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4BEE0123CE2D4300F6DC2D /* DetailViewController.swift */; };
 		CB91C04423CDC84200AE4F84 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91C04323CDC84200AE4F84 /* BaseService.swift */; };
 		CB91C04623CDCA5A00AE4F84 /* HTTPProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91C04523CDCA5A00AE4F84 /* HTTPProvider.swift */; };
@@ -46,7 +45,6 @@
 		714F8C4DC99D26ED26B2A6EC /* Pods-testTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testTests.release.xcconfig"; path = "Target Support Files/Pods-testTests/Pods-testTests.release.xcconfig"; sourceTree = "<group>"; };
 		CB4BEDF923CDF51900F6DC2D /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
 		CB4BEDFD23CE267D00F6DC2D /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
-		CB4BEDFF23CE291B00F6DC2D /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		CB4BEE0123CE2D4300F6DC2D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CB91C04323CDC84200AE4F84 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		CB91C04523CDCA5A00AE4F84 /* HTTPProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPProvider.swift; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 			children = (
 				CBA57AB023CC6D42006C41F3 /* SVProgressHUDExtension.swift */,
 				CB91C04C23CDF01E00AE4F84 /* StringExtension.swift */,
-				CB4BEDFF23CE291B00F6DC2D /* DateExtension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -416,7 +413,6 @@
 				CB4BEE0223CE2D4300F6DC2D /* DetailViewController.swift in Sources */,
 				CB91C04623CDCA5A00AE4F84 /* HTTPProvider.swift in Sources */,
 				CBA57A8C23CC661E006C41F3 /* FirstViewController.swift in Sources */,
-				CB4BEE0023CE291B00F6DC2D /* DateExtension.swift in Sources */,
 				CB91C04D23CDF01E00AE4F84 /* StringExtension.swift in Sources */,
 				CB4BEDFA23CDF51900F6DC2D /* UserDTO.swift in Sources */,
 				CB91C04923CDCB6500AE4F84 /* UserService.swift in Sources */,

@@ -63,6 +63,10 @@ class ListViewController: UIViewController {
                 
             }).disposed(by: disposeBag)
         
+        tableView
+        .rx.setDelegate(self)
+        .disposed(by: disposeBag)
+        
         // binding loading to vc
         self.viewModel.loading
             .bind(to: SVProgressHUD.rx.isAnimating).disposed(by: disposeBag)
@@ -83,5 +87,11 @@ class ListViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+    }
+}
+
+extension ListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 145
     }
 }

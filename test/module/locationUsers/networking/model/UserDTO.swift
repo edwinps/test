@@ -8,19 +8,11 @@
 
 import Foundation
 
-enum Motion: String, Codable {
-    case walk
-    case run
-    case vehicle
-    case bicycle
-    case still
-}
-
 struct UserDTO: Codable {
     let name: String?
     let avatar: String?
-    let motion: Motion?
-    let timestamp: Date?
+    let motion: String?
+    let timestamp: String?
     let latitude: Double?
     let longitude: Double?
 }
