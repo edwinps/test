@@ -138,10 +138,10 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="Lov-v0-Jdx">
             <objects>
-                <viewController id="qeU-Qo-I6G" sceneMemberID="viewController">
+                <viewController id="qeU-Qo-I6G" customClass="DetailViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sRY-kj-92F">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
