@@ -30,30 +30,32 @@ class LocationViewModel {
     }
     
     func configureLocationManager() {
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.startUpdatingLocation()
-        self.locationManager.rx.didChangeAuthorization.subscribe(onNext: {[weak self] _, status in
-            guard let strongSelf = self else {
-                return
-            }
+        self.locationManager.rx.didChangeAuthorization.subscribe(onNext: { [weak self] _, status in
+            guard let `self` = self else { return }
             switch status {
             case .denied, .notDetermined, .restricted:
-                strongSelf.error.onNext("You should allow and activate geolocation")
+                self.error.onNext("You should allow and activate geolocation")
             default:
-                strongSelf.didUpdateLocation()
+                self.didUpdateLocation()
             }
-        })
-            .disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
+        
+        self.locationManager.rx.status.subscribe(onNext: { [weak self] status in
+            if status == .authorizedWhenInUse {
+              self?.didUpdateLocation()
+            }
+        }).disposed(by: disposeBag)
+        
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
     }
     
     private func didUpdateLocation() {
         let didUpdateLocation = locationManager.rx.didUpdateLocations.observeOn(MainScheduler.instance)
         didUpdateLocation.take(1).subscribe(onNext: { [weak self] location in
-            guard let strongSelf = self else {
-                return
-            }
+            guard let `self` = self else { return }
             let locationCoordinate = location.locations[0].coordinate
-            strongSelf.getUsers(latitude: locationCoordinate.latitude, longitude: locationCoordinate.longitude)
+            self.getUsers(latitude: locationCoordinate.latitude, longitude: locationCoordinate.longitude)
         }).disposed(by: disposeBag)
     }
     

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import CoreLocation
-import RxCoreLocation
 import RxSwift
 import RxCocoa
 import SVProgressHUD
@@ -17,11 +15,8 @@ class ListViewController: UIViewController {
     
     // IBOutlet
     @IBOutlet weak var tableView: UITableView!
-    
-    var items = PublishSubject<[UserDTO]>()
     let disposeBag = DisposeBag()
     var viewModel: LocationViewModel
-    private let locationManager = CLLocationManager()
     
     public init(viewModel: LocationViewModel) {
         self.viewModel = viewModel
@@ -39,8 +34,12 @@ class ListViewController: UIViewController {
         self.viewModel.configureLocationManager()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     private func setupBinding() {
-        self.items.bind(to: tableView.rx.items(cellIdentifier: "cell",
+        self.viewModel.items.bind(to: tableView.rx.items(cellIdentifier: "cell",
                                           cellType: UserCell.self)) {  (row, dto, cell) in
                                             cell.setup(user: dto)
         }.disposed(by: disposeBag)
@@ -59,7 +58,7 @@ class ListViewController: UIViewController {
         
         self.tableView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
-                let dto = self?.items.map { $0[indexPath.row] }
+                //let dto = self?.viewModel.items.map { $0[indexPath.row] }
                 
             }).disposed(by: disposeBag)
         
@@ -71,13 +70,6 @@ class ListViewController: UIViewController {
         self.viewModel.loading
             .bind(to: SVProgressHUD.rx.isAnimating).disposed(by: disposeBag)
         
-        // binding items to items viewmodel
-        self.viewModel
-            .items
-            .observeOn(MainScheduler.instance)
-            .bind(to: items)
-            .disposed(by: disposeBag)
-        
         // observing errors to show
         self.viewModel
             .error
@@ -86,7 +78,6 @@ class ListViewController: UIViewController {
                 SVProgressHUD.showError(withStatus: error)
             })
             .disposed(by: disposeBag)
-        
     }
 }
 
