@@ -11,7 +11,6 @@ import Moya
 import Result
 
 public class BaseService: TargetType {
-    
     public var baseURL: URL {
         let url = "https://api-dev.alpify.com:3005"
         return URL(string: url)!
@@ -58,11 +57,10 @@ public class BaseService: TargetType {
         }
         do {
             let jsonData = try Data(contentsOf: URL(fileURLWithPath: path))
-            return(jsonData)
+            return (jsonData)
         } catch {
             debugPrint("there are problems with the Json of test")
-            return("".utf8Encoded)
+            return ("".utf8Encoded)
         }
     }
 }
-

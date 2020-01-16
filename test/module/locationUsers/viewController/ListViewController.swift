@@ -6,17 +6,18 @@
 //  Copyright © 2020 safe365. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
 import SVProgressHUD
+import UIKit
 
 class ListViewController: UIViewController {
-    
     // IBOutlet
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
     let disposeBag = DisposeBag()
     var viewModel: LocationViewModel
+    var router: LocationRouterImp?
+    var timer: Timer?
     
     public init(viewModel: LocationViewModel) {
         self.viewModel = viewModel
@@ -24,60 +25,70 @@ class ListViewController: UIViewController {
     }
     
     required init?(coder decoder: NSCoder) {
-        self.viewModel = LocationViewModel()
+        viewModel = LocationViewModel()
         super.init(coder: decoder)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupBinding()
-        self.viewModel.configureLocationManager()
+        router = LocationRouterImp(viewController: self)
+        setupBinding()
+        setupTableView()
+        viewModel.configureLocationManager()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if timer == nil {
+            timer = Timer.scheduledTimer(timeInterval: 10, target: self,
+                                         selector: #selector(updateLocation),
+                                         userInfo: nil, repeats: true)
+        } else {
+            timer?.invalidate()
+            timer = Timer.scheduledTimer(timeInterval: 10, target: self,
+                                         selector: #selector(updateLocation),
+                                         userInfo: nil, repeats: true)
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        timer?.invalidate()
     }
     
     private func setupBinding() {
-        self.viewModel.items.bind(to: tableView.rx.items(cellIdentifier: "cell",
-                                          cellType: UserCell.self)) {  (row, dto, cell) in
-                                            cell.setup(user: dto)
-        }.disposed(by: disposeBag)
-        
-        tableView.rx.willDisplayCell
-            .subscribe(onNext: ({ (cell,indexPath) in
-                cell.alpha = 0
-                let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 0, 0)
-                cell.layer.transform = transform
-                UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.7,
-                               initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-                                cell.alpha = 1
-                                cell.layer.transform = CATransform3DIdentity
-                }, completion: nil)
-            })).disposed(by: disposeBag)
-        
-        self.tableView.rx.itemSelected
-            .subscribe(onNext: { [weak self] indexPath in
-                //let dto = self?.viewModel.items.map { $0[indexPath.row] }
-                
-            }).disposed(by: disposeBag)
-        
-        tableView
-        .rx.setDelegate(self)
-        .disposed(by: disposeBag)
-        
         // binding loading to vc
-        self.viewModel.loading
+        viewModel.loading
             .bind(to: SVProgressHUD.rx.isAnimating).disposed(by: disposeBag)
         
         // observing errors to show
-        self.viewModel
+        viewModel
             .error
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (error) in
+            .subscribe(onNext: { error in
                 SVProgressHUD.showError(withStatus: error)
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func setupTableView() {
+        viewModel.items.bind(to: tableView.rx.items(cellIdentifier: "cell",
+                                                    cellType: UserCell.self)) { _, dto, cell in
+            cell.setup(user: dto)
+        }.disposed(by: disposeBag)
+        
+        tableView
+            .rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(UserDTO.self)
+            .subscribe(onNext: { [weak self] userDTO in
+                self?.router?.navigate(to: .detailLocation(user: userDTO))
+            }).disposed(by: disposeBag)
+    }
+    
+    @objc fileprivate func updateLocation(timer: Timer) {
+        viewModel.configureLocationManager()
     }
 }
 

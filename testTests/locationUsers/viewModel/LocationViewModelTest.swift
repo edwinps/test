@@ -8,20 +8,19 @@
 
 import XCTest
 
-@testable import test
-import XCTest
 import Moya
 import RxSwift
+@testable import test
+import XCTest
 
 class LocationViewModelTest: XCTestCase {
-    
     var viewModel: LocationViewModel!
     var hTTPProvider: HTTPProviderImp!
-
+    
     override func setUp() {
         self.viewModel = LocationViewModel()
     }
-
+    
     override func tearDown() {
         self.viewModel = nil
         self.hTTPProvider = nil
@@ -44,24 +43,22 @@ class LocationViewModelTest: XCTestCase {
         // Given
         let disposeBag = DisposeBag()
         self.setupEndpoint(200)
-        let expectUsers = expectation(description:"items contains users")
+        let expectUsers = expectation(description: "items contains users")
         
         // When
         self.viewModel
             .items
-            .subscribe(
-                onNext: { dtos in
-                    XCTAssertFalse(dtos.isEmpty)
-                    expectUsers.fulfill()
+            .subscribe(onNext: { dtos in
+                XCTAssertFalse(dtos.isEmpty)
+                expectUsers.fulfill()
             }).disposed(by: disposeBag)
         
         self.viewModel
-        .error
-        .subscribe(
-            onNext: { error in
+            .error
+            .subscribe(onNext: { _ in
                 XCTFail("there should be no error")
                 expectUsers.fulfill()
-        }).disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
         
         self.viewModel.getUsers(latitude: 41.387154, longitude: 2.167180)
         
@@ -73,24 +70,22 @@ class LocationViewModelTest: XCTestCase {
         // Given
         let disposeBag = DisposeBag()
         self.setupEndpoint(200, sampleData: "".utf8Encoded)
-        let expectUsers = expectation(description:"items doesn't contains users")
+        let expectUsers = expectation(description: "items doesn't contains users")
         
         // When
         self.viewModel
             .items
-            .subscribe(
-                onNext: { dtos in
-                    XCTFail("there should be no items")
-                    expectUsers.fulfill()
+            .subscribe(onNext: { _ in
+                XCTFail("there should be no items")
+                expectUsers.fulfill()
             }).disposed(by: disposeBag)
         
         self.viewModel
-        .error
-        .subscribe(
-            onNext: { error in
+            .error
+            .subscribe(onNext: { error in
                 XCTAssertEqual(RespondError.mappingError.rawValue, error)
                 expectUsers.fulfill()
-        }).disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
         
         self.viewModel.getUsers(latitude: 41.387154, longitude: 2.167180)
         
@@ -102,29 +97,26 @@ class LocationViewModelTest: XCTestCase {
         // Given
         let disposeBag = DisposeBag()
         self.setupEndpoint(500)
-        let expectUsers = expectation(description:"items doesn't contains users")
+        let expectUsers = expectation(description: "items doesn't contains users")
         
         // When
         self.viewModel
             .items
-            .subscribe(
-                onNext: { dtos in
-                    XCTFail("there should be no items")
-                    expectUsers.fulfill()
+            .subscribe(onNext: { _ in
+                XCTFail("there should be no items")
+                expectUsers.fulfill()
             }).disposed(by: disposeBag)
         
         self.viewModel
-        .error
-        .subscribe(
-            onNext: { error in
+            .error
+            .subscribe(onNext: { error in
                 XCTAssertEqual(RespondError.serviceError.rawValue, error)
                 expectUsers.fulfill()
-        }).disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
         
         self.viewModel.getUsers(latitude: 41.387154, longitude: 2.167180)
         
         // Then
         wait(for: [expectUsers], timeout: 2)
     }
-
 }

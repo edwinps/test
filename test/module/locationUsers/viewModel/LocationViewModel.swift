@@ -6,11 +6,11 @@
 //  Copyright © 2020 safe365. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
+import RxCocoa
 import RxCoreLocation
 import RxSwift
-import RxCocoa
 
 enum RespondError: String {
     case locationError = "You should allow and activate geolocation"
@@ -44,13 +44,13 @@ class LocationViewModel {
             default:
                 self.didUpdateLocation()
             }
-        }).disposed(by: disposeBag)
+        }).disposed(by: self.disposeBag)
         
         self.locationManager.rx.status.subscribe(onNext: { [weak self] status in
             if status == .authorizedWhenInUse {
-              self?.didUpdateLocation()
+                self?.didUpdateLocation()
             }
-        }).disposed(by: disposeBag)
+        }).disposed(by: self.disposeBag)
         
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
@@ -68,7 +68,7 @@ class LocationViewModel {
     func getUsers(latitude: Double, longitude: Double) {
         debugPrint("start CALL WS Users")
         self.loading.onNext(true)
-        self.provider.request(UserService(latitude: latitude, longitude: longitude)) { (result) in
+        self.provider.request(UserService(latitude: latitude, longitude: longitude)) { result in
             self.loading.onNext(false)
             switch result {
             case .success(let response):
@@ -80,7 +80,6 @@ class LocationViewModel {
                 }
             case .failure:
                 self.error.onNext(RespondError.serviceError.rawValue)
-                break
             }
         }
     }

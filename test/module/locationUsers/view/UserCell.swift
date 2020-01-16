@@ -6,13 +6,13 @@
 //  Copyright © 2020 safe365. All rights reserved.
 //
 
-import UIKit
 import Kingfisher
+import UIKit
 
 class UserCell: UITableViewCell {
-    @IBOutlet weak var avatarImage: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet var avatarImage: UIImageView!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,7 +24,7 @@ class UserCell: UITableViewCell {
             self.avatarImage.kf.setImage(with: url)
         }
         self.nameLabel.text = user.name
-        self.timeLabel.text = user.timestamp?.format()
+        self.timeLabel.text = user.timestamp?.offsetFrom(date: Date())
     }
     
     override func prepareForReuse() {

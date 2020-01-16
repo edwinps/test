@@ -11,6 +11,8 @@
 		CB4BEDFA23CDF51900F6DC2D /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4BEDF923CDF51900F6DC2D /* UserDTO.swift */; };
 		CB4BEDFE23CE267D00F6DC2D /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4BEDFD23CE267D00F6DC2D /* UserCell.swift */; };
 		CB4BEE0223CE2D4300F6DC2D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4BEE0123CE2D4300F6DC2D /* DetailViewController.swift */; };
+		CB767E5623D07BD200B16426 /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB767E5523D07BD200B16426 /* CustomPointAnnotation.swift */; };
+		CB767E5823D07DF400B16426 /* LocationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB767E5723D07DF400B16426 /* LocationRouter.swift */; };
 		CB88D28A23CF222C00B900A9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB88D28923CF222C00B900A9 /* MapViewController.swift */; };
 		CB88D28C23CF72B800B900A9 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB88D28B23CF72B700B900A9 /* ImageExtension.swift */; };
 		CB88D29023CF781E00B900A9 /* LocationViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB88D28F23CF781E00B900A9 /* LocationViewModelTest.swift */; };
@@ -20,7 +22,7 @@
 		CB91C04B23CDEFB100AE4F84 /* UserService.json in Resources */ = {isa = PBXBuildFile; fileRef = CB91C04A23CDEFB100AE4F84 /* UserService.json */; };
 		CB91C04D23CDF01E00AE4F84 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91C04C23CDF01E00AE4F84 /* StringExtension.swift */; };
 		CBA57A8823CC661E006C41F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA57A8723CC661E006C41F3 /* AppDelegate.swift */; };
-		CBA57A9123CC661E006C41F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA57A8F23CC661E006C41F3 /* Main.storyboard */; };
+		CBA57A9123CC661E006C41F3 /* Location.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA57A8F23CC661E006C41F3 /* Location.storyboard */; };
 		CBA57A9323CC6624006C41F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBA57A9223CC6624006C41F3 /* Assets.xcassets */; };
 		CBA57A9623CC6624006C41F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA57A9423CC6624006C41F3 /* LaunchScreen.storyboard */; };
 		CBA57AB123CC6D42006C41F3 /* SVProgressHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA57AB023CC6D42006C41F3 /* SVProgressHUDExtension.swift */; };
@@ -47,6 +49,8 @@
 		CB4BEDF923CDF51900F6DC2D /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
 		CB4BEDFD23CE267D00F6DC2D /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		CB4BEE0123CE2D4300F6DC2D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		CB767E5523D07BD200B16426 /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
+		CB767E5723D07DF400B16426 /* LocationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRouter.swift; sourceTree = "<group>"; };
 		CB88D28923CF222C00B900A9 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		CB88D28B23CF72B700B900A9 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		CB88D28F23CF781E00B900A9 /* LocationViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModelTest.swift; sourceTree = "<group>"; };
@@ -57,7 +61,7 @@
 		CB91C04C23CDF01E00AE4F84 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		CBA57A8423CC661E006C41F3 /* test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA57A8723CC661E006C41F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CBA57A9023CC661E006C41F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CBA57A9023CC661E006C41F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Location.storyboard; sourceTree = "<group>"; };
 		CBA57A9223CC6624006C41F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBA57A9523CC6624006C41F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBA57A9723CC6624006C41F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -94,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				CB4BEDF923CDF51900F6DC2D /* UserDTO.swift */,
+				CB767E5523D07BD200B16426 /* CustomPointAnnotation.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -106,6 +111,7 @@
 				CB91C04723CDCAB800AE4F84 /* networking */,
 				CBA57AB323CC6D96006C41F3 /* viewController */,
 				CBA57AB223CC6D88006C41F3 /* viewModel */,
+				CB767E5723D07DF400B16426 /* LocationRouter.swift */,
 			);
 			path = locationUsers;
 			sourceTree = "<group>";
@@ -113,7 +119,7 @@
 		CB4BEDFC23CE261A00F6DC2D /* view */ = {
 			isa = PBXGroup;
 			children = (
-				CBA57A8F23CC661E006C41F3 /* Main.storyboard */,
+				CBA57A8F23CC661E006C41F3 /* Location.storyboard */,
 				CB4BEDFD23CE267D00F6DC2D /* UserCell.swift */,
 			);
 			path = view;
@@ -348,7 +354,7 @@
 				CB91C04B23CDEFB100AE4F84 /* UserService.json in Resources */,
 				CBA57A9623CC6624006C41F3 /* LaunchScreen.storyboard in Resources */,
 				CBA57A9323CC6624006C41F3 /* Assets.xcassets in Resources */,
-				CBA57A9123CC661E006C41F3 /* Main.storyboard in Resources */,
+				CBA57A9123CC661E006C41F3 /* Location.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,7 +453,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB767E5623D07BD200B16426 /* CustomPointAnnotation.swift in Sources */,
 				CB4BEE0223CE2D4300F6DC2D /* DetailViewController.swift in Sources */,
+				CB767E5823D07DF400B16426 /* LocationRouter.swift in Sources */,
 				CB91C04623CDCA5A00AE4F84 /* HTTPProvider.swift in Sources */,
 				CB88D28C23CF72B800B900A9 /* ImageExtension.swift in Sources */,
 				CB91C04D23CDF01E00AE4F84 /* StringExtension.swift in Sources */,
@@ -482,12 +490,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CBA57A8F23CC661E006C41F3 /* Main.storyboard */ = {
+		CBA57A8F23CC661E006C41F3 /* Location.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				CBA57A9023CC661E006C41F3 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Location.storyboard;
 			sourceTree = "<group>";
 		};
 		CBA57A9423CC6624006C41F3 /* LaunchScreen.storyboard */ = {
@@ -621,15 +629,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VPHG5A9X3L;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = test/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.laposte.lapostepro.dev2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -643,15 +651,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VPHG5A9X3L;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = test/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.laposte.lapostepro.dev2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

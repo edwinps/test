@@ -29,8 +29,7 @@ class UserService: BaseService {
     
     override var headers: [String: String]? {
         let headers: [String: String] = ["Accept": "application/json",
-            "Content-Type": "application/json"
-        ]
+                                         "Content-Type": "application/json"]
         return headers
     }
     

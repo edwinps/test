@@ -6,21 +6,21 @@
 //  Copyright © 2020 safe365. All rights reserved.
 //
 
-import UIKit
-import MapKit
-import RxSwift
-import RxCocoa
-import SVProgressHUD
 import Kingfisher
+import MapKit
+import RxCocoa
+import RxSwift
+import SVProgressHUD
+import UIKit
 
 class MapViewController: UIViewController {
-    
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet var mapView: MKMapView!
     
     var items = PublishSubject<[UserDTO]>()
     let disposeBag = DisposeBag()
     var viewModel: LocationViewModel
     private let locationManager = CLLocationManager()
+    var router: LocationRouterImp?
     
     public init(viewModel: LocationViewModel) {
         self.viewModel = viewModel
@@ -34,34 +34,35 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.router = LocationRouterImp(viewController: self)
         self.setupBinding()
         self.viewModel.configureLocationManager()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        mapView.showsUserLocation = true
-        mapView.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.mapView.showsUserLocation = true
+        self.mapView.delegate = self
         self.configureMap()
     }
     
-    private func setupBinding() {        
+    private func setupBinding() {
         // binding loading to vc
         self.viewModel.loading
-            .bind(to: SVProgressHUD.rx.isAnimating).disposed(by: disposeBag)
+            .bind(to: SVProgressHUD.rx.isAnimating).disposed(by: self.disposeBag)
         
         // binding items to items viewmodel
         self.viewModel
             .items
             .observeOn(MainScheduler.instance)
-            .bind(to: items)
-            .disposed(by: disposeBag)
+            .bind(to: self.items)
+            .disposed(by: self.disposeBag)
         
         // observing errors to show
         self.viewModel
             .error
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (error) in
+            .subscribe(onNext: { error in
                 SVProgressHUD.showError(withStatus: error)
             })
-            .disposed(by: disposeBag)
+            .disposed(by: self.disposeBag)
     }
     
     func configureMap() {
@@ -71,11 +72,9 @@ class MapViewController: UIViewController {
                 guard let `self` = self else { return }
                 self.mapView.removeAnnotations(self.mapView.annotations.filter { $0 is CustomPointAnnotation })
                 for user in users {
-                    if let latitude = user.latitude , let longitude = user.longitude,
-                        let avatar = user.avatar, let url = URL(string: avatar) {
-                        let customPoint = CustomPointAnnotation(title: user.name,
-                                                                location: CLLocationCoordinate2DMake(latitude, longitude),
-                                                                image: url)
+                    if let latitude = user.latitude, let longitude = user.longitude {
+                        let customPoint = CustomPointAnnotation(user: user,
+                                                                coordinate: CLLocationCoordinate2DMake(latitude, longitude))
                         self.mapView.addAnnotation(customPoint)
                     }
                 }
@@ -89,7 +88,7 @@ extension MapViewController: MKMapViewDelegate {
         
         let annotationIdentifier = "customannotation"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
-
+        
         if annotationView == nil {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
             annotationView?.canShowCallout = true
@@ -97,33 +96,28 @@ extension MapViewController: MKMapViewDelegate {
         else {
             annotationView?.annotation = annotation
         }
-        let imageView = UIImageView()
-        imageView.kf.setImage(with: customAnnotation.imageURL) { result in
-            switch result {
-            case .success(let value):
-                let size = CGSize(width: 25, height: 25)
-                annotationView?.image = value.image.resized(to: size)
-            case .failure:
-                break
+        if let avatar = customAnnotation.user.avatar, let url = URL(string: avatar) {
+            let imageView = UIImageView()
+            imageView.kf.setImage(with: url) { result in
+                switch result {
+                case .success(let value):
+                    let size = CGSize(width: 25, height: 25)
+                    annotationView?.image = value.image.resized(to: size)
+                case .failure:
+                    break
+                }
             }
         }
         return annotationView
     }
-
-    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
-      // Adjust the map to show all the annotations (user location and any destination annotation)
-      mapView.showAnnotations(self.mapView.annotations, animated: true)
-    }
-}
-
-class CustomPointAnnotation: NSObject, MKAnnotation {
-    let coordinate: CLLocationCoordinate2D
-    let title: String?
-    let imageURL: URL
     
-    init(title: String?, location: CLLocationCoordinate2D, image: URL) {
-        self.title = title
-        self.coordinate = location
-        self.imageURL = image
+    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+        // Adjust the map to show all the annotations (user location and any destination annotation)
+        mapView.showAnnotations(self.mapView.annotations, animated: true)
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let customAnnotation = view.annotation as? CustomPointAnnotation else { return }
+        self.router?.navigate(to: .detailLocation(user: customAnnotation.user))
     }
 }
