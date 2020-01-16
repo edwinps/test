@@ -2,8 +2,7 @@
 //  LocationViewModelTest.swift
 //  testTests
 //
-//  Created by PENA SANCHEZ Edwin Jose on 15/01/2020.
-//  Copyright © 2020 safe365. All rights reserved.
+//  Created by PENA SANCHEZ Edwin Jose
 //
 
 import XCTest
