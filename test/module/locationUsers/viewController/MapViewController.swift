@@ -61,7 +61,7 @@ class MapViewController: UIViewController {
             .subscribe(onNext: { (error) in
                 SVProgressHUD.showError(withStatus: error)
             })
-            .disposed(by: disposeBag)        
+            .disposed(by: disposeBag)
     }
     
     func configureMap() {

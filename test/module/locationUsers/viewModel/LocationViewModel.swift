@@ -12,6 +12,12 @@ import RxCoreLocation
 import RxSwift
 import RxCocoa
 
+enum RespondError: String {
+    case locationError = "You should allow and activate geolocation"
+    case mappingError = "Error when mapping the json"
+    case serviceError = "Error with the WS Users"
+}
+
 class LocationViewModel {
     let items: PublishSubject<[UserDTO]> = PublishSubject()
     let loading: PublishSubject<Bool> = PublishSubject()
@@ -34,7 +40,7 @@ class LocationViewModel {
             guard let `self` = self else { return }
             switch status {
             case .denied, .notDetermined, .restricted:
-                self.error.onNext("You should allow and activate geolocation")
+                self.error.onNext(RespondError.locationError.rawValue)
             default:
                 self.didUpdateLocation()
             }
@@ -70,10 +76,10 @@ class LocationViewModel {
                     let userDTO = try response.map([UserDTO].self)
                     self.items.onNext(userDTO)
                 } catch {
-                    self.error.onNext("Error when mapping the json")
+                    self.error.onNext(RespondError.mappingError.rawValue)
                 }
             case .failure:
-                self.error.onNext("Error with the WS Users")
+                self.error.onNext(RespondError.serviceError.rawValue)
                 break
             }
         }

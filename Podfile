@@ -16,7 +16,10 @@ target 'test' do
 
   target 'testTests' do
     inherit! :search_paths
+    
     # Pods for testing
+    pod 'Moya'
+    pod 'RxSwift'
   end
 
 end
