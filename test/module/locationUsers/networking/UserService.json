@@ -4,79 +4,79 @@
         "avatar": "https://www.lavanguardia.com/r/GODO/LV/p0/WebSite/2018/10/06/Recortada/featuredImage-19075-10-secretos-que-quiza-no-sabias-de-nicolas-cage-992x558@LaVanguardia-Web.jpg",
         "motion": "walk",
         "timestamp": "2020-01-16T10:00:48.712Z",
-        "latitude": "41.3871540.0010070467999600812",
-        "longitude": "2.1671800.0012462320816750711"
+        "latitude": null,
+        "longitude": null
     },
     {
         "name": "Pandi",
         "avatar": "https://cnnespanol2.files.wordpress.com/2016/09/panda-gigante.jpg?quality=100&strip=info&w=460&h=260&crop=1",
         "motion": "still",
         "timestamp": "2020-01-16T17:15:48.712Z",
-        "latitude": "41.387154-0.000938078980028985",
-        "longitude": "2.1671800.0017303216558112763"
+        "latitude": null,
+        "longitude": null
     },
     {
         "name": "Pinkie Pie",
         "avatar": "https://i1.sndcdn.com/artworks-000028370022-n5xd0n-t500x500.jpg",
         "motion": "run",
         "timestamp": "2020-01-16T12:06:48.712Z",
-        "latitude": "41.3871540.00142273043715553",
-        "longitude": "2.1671800.0012732405136798386"
+        "latitude": null,
+        "longitude": null
     },
     {
         "name": "Hackerman",
         "avatar": "https://www.muycomputer.com/wp-content/uploads/2019/09/MrRobot.jpg",
         "motion": "still",
         "timestamp": "2020-01-17T00:00:48.712Z",
-        "latitude": "41.387154-0.00006381859778983578",
-        "longitude": "2.167180-0.0009677650542807546"
+        "latitude": null,
+        "longitude": null
     },
     {
         "name": "José Antonio",
         "avatar": "https://www.elplural.com/uploads/s1/56/64/32/un-hombre-rompe-a-llorar-al-hablar-de-franco-y-primo-de-rivera.jpeg",
         "motion": "vehicle",
         "timestamp": "2020-01-17T00:00:48.712Z",
-        "latitude": "41.387154-0.00008402047505831023",
-        "longitude": "2.167180-0.0008909130026682797"
+        "latitude": null,
+        "longitude": null
     },
     {
         "name": "Ignatius",
         "avatar": "https://www.laguiago.com/wp-content/uploads/2019/12/1238-I5df7d4df12381576522975-ev-1.jpg",
         "motion": "bicycle",
         "timestamp": "2020-01-16T22:29:48.712Z",
-        "latitude": "41.3871540.0012904929481692647",
-        "longitude": "2.167180-0.0004351487196699675"
+        "latitude": null,
+        "longitude": null
     },
     {
         "name": "Baby Yoda",
         "avatar": "https://i.blogs.es/e83eb9/baby-yoda/450_1000.jpeg",
         "motion": "",
         "timestamp": "2020-01-17T05:45:48.712Z",
-        "latitude": "41.3871540.001808700700307051",
-        "longitude": "2.1671800.0019810955081485454"
+        "latitude": null,
+        "longitude": null
     },
     {
         "name": "Angry Cat",
         "avatar": "https://ep01.epimg.net/verne/imagenes/2019/05/17/articulo/1558087739_432602_1558090295_noticia_normal.jpg",
         "motion": "run",
         "timestamp": "2020-01-16T19:46:48.712Z",
-        "latitude": "41.387154-0.0007854191553259265",
-        "longitude": "2.167180-0.0001461748574055197"
+        "latitude": null,
+        "longitude": null
     },
     {
         "name": "Cuache",
         "avatar": "https://i.ytimg.com/vi/a34qHw5TzEk/maxresdefault.jpg",
         "motion": "still",
         "timestamp": "2020-01-16T12:45:48.712Z",
-        "latitude": "41.3871540.0014414851804581367",
-        "longitude": "2.1671800.0018879852752713715"
+        "latitude": null,
+        "longitude": null
     },
     {
         "name": "Nyan Cat",
         "avatar": "https://www2.minijuegosgratis.com/v3/games/thumbnails/203877_1.jpg",
         "motion": "run",
         "timestamp": "2020-01-16T14:26:48.712Z",
-        "latitude": "41.3871540.0015905264465907831",
-        "longitude": "2.1671800.0011698943939973247"
+        "latitude": null,
+        "longitude": null
     }
 ]
