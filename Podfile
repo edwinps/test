@@ -11,6 +11,7 @@ target 'test' do
   pod 'SVProgressHUD'
   pod 'Moya'
   pod 'Kingfisher'
+  pod 'DMSOpenPGP'
   
   # Pods for test
 
