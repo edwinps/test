@@ -1,9 +1,5 @@
 PODS:
   - Alamofire (4.9.1)
-  - BouncyCastle-ObjC (0.1.1)
-  - DMSOpenPGP (0.1.4):
-    - BouncyCastle-ObjC (~> 0.1.0)
-    - OpenSSL-Universal (~> 1.0.2.17)
   - Kingfisher (5.12.0):
     - Kingfisher/Core (= 5.12.0)
   - Kingfisher/Core (5.12.0)
@@ -12,9 +8,6 @@ PODS:
   - Moya/Core (13.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 4.1)
-  - OpenSSL-Universal (1.0.2.19):
-    - OpenSSL-Universal/Static (= 1.0.2.19)
-  - OpenSSL-Universal/Static (1.0.2.19)
   - Result (4.1.0)
   - RxCocoa (5.0.1):
     - RxRelay (~> 5)
@@ -30,7 +23,6 @@ PODS:
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
-  - DMSOpenPGP
   - Kingfisher
   - Moya
   - RxCocoa
@@ -49,18 +41,11 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SVProgressHUD
-  trunk:
-    - BouncyCastle-ObjC
-    - DMSOpenPGP
-    - OpenSSL-Universal
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  BouncyCastle-ObjC: bf0db0fe9fe11ae5e2515d2e6816ef86454b9cc6
-  DMSOpenPGP: 3c667b775e705abef816582f320bbadb972bd8ce
   Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
-  OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
   RxCoreLocation: 85e9a3310c22619404dcbf91258d29c44429eea8
@@ -68,6 +53,6 @@ SPEC CHECKSUMS:
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 859aae1b1d5596be92d15d65193d89f5dc101730
+PODFILE CHECKSUM: a961285863d68a0727e33122a345b72c1d60f411
 
 COCOAPODS: 1.8.4
